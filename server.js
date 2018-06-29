@@ -6,7 +6,7 @@ const PATH_FILE_WATCHED = 'target.txt';
 
 const app = express();
 
-app.use(express.static(`${__dirname}/dist`));
+app.use(express.static(`${__dirname}/src`));
 
 app.get('/oauthcallback', (req, res) => {
 
@@ -16,7 +16,7 @@ app.get('/oauthcallback', (req, res) => {
 
         if (err) throw err;
 
-        const fileUrl = path.join(__dirname, 'dist/index.html');
+        const fileUrl = path.join(__dirname, 'src/index.html');
         res.redirect('/');
 
     });
@@ -25,7 +25,7 @@ app.get('/oauthcallback', (req, res) => {
 
 app.get('*', (req, res) => {
 
-    const fileUrl = path.join(__dirname, 'dist/index.html');
+    const fileUrl = path.join(__dirname, 'src/index.html');
     res.sendFile(fileUrl);
 
 });
